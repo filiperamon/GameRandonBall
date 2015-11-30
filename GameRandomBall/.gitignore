@@ -1,0 +1,14 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+GameRandomBall/.idea/
+GameRandomBall/GameRandomBall.iml
+GameRandomBall/gradlew.bat
+GameRandomBall/settings.gradle
+GameRandomBall/.idea/gradle.xml
+GameRandomBall/app/app.iml
