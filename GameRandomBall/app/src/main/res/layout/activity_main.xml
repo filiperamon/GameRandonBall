@@ -10,7 +10,150 @@
     tools:context="wiiber.com.gamerandomball.MainActivity">
 
     <TextView
+        android:id="@+id/txvNumeroRandomico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textSize="100dp"
+        android:gravity="center"
+        android:layout_below="@+id/textViewSoma"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/grid_layout_tabuleiro" />
+
+    <Button
+        android:id="@+id/gerar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:text="Gerar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <GridLayout
+        android:id="@+id/grid_layout_tabuleiro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="6"
+        android:rowCount="6"
+        android:columnOrderPreserved="true"
+        android:useDefaultMargins="true"
+        android:layout_above="@+id/gerar"
+        android:layout_centerHorizontal="true">
+
+
+        <Button
+            android:id="@+id/textViewNumOne"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_above="@+id/gerar"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/fundo"
+            android:textSize="20dp"
+            android:elevation="6dp"
+            android:layout_column="0"
+            android:layout_row="0"/>
+
+
+        <Button
+            android:id="@+id/textViewNumTwo"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_above="@+id/gerar"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/fundo"
+            android:layout_toRightOf="@+id/textViewNumOne"
+            android:layout_toEndOf="@+id/textViewNumOne"
+            android:textSize="20dp"
+            android:elevation="6dp"
+            android:layout_column="1"
+            android:layout_row="0"/>
+
+
+        <Button
+            android:id="@+id/textViewNumTree"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_above="@+id/gerar"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/fundo"
+            android:layout_toRightOf="@+id/textViewNumOne"
+            android:layout_toEndOf="@+id/textViewNumOne"
+            android:textSize="20dp"
+            android:elevation="6dp"
+            android:layout_column="2"
+            android:layout_row="0"/>
+        <Button
+            android:id="@+id/textViewNumFour"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_above="@+id/gerar"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/fundo"
+            android:layout_alignTop="@+id/textViewNumTree"
+            android:layout_toRightOf="@+id/textViewNumTree"
+            android:layout_toEndOf="@+id/textViewNumTree"
+            android:textSize="20dp"
+            android:elevation="6dp"
+            android:layout_column="0"
+            android:layout_row="1" />
+
+
+        <Button
+            android:id="@+id/textViewNumFive"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_above="@+id/gerar"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/fundo"
+            android:layout_alignTop="@+id/textViewNumFour"
+            android:layout_toRightOf="@+id/textViewNumFour"
+            android:textSize="20dp"
+            android:elevation="6dp"
+            android:layout_column="1"
+            android:layout_row="1"/>
+
+        <Button
+            android:id="@+id/textViewNumSix"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_above="@+id/gerar"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/fundo"
+            android:layout_alignTop="@+id/textViewNumFour"
+            android:layout_toRightOf="@+id/textViewNumFour"
+            android:textSize="20dp"
+            android:elevation="6dp"
+            android:layout_column="2"
+            android:layout_row="1"/>
+
+
+    </GridLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Soma:  0"
+        android:id="@+id/textViewSoma"
+        />
+
+
+
 </RelativeLayout>
