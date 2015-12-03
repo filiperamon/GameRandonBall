@@ -9,24 +9,56 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="wiiber.com.gamerandomball.MainActivity">
 
-    <TextView
-        android:id="@+id/txvNumeroRandomico"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="100dp"
-        android:gravity="center"
         android:layout_below="@+id/textViewSoma"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/grid_layout_tabuleiro" />
+        android:layout_above="@+id/grid_layout_tabuleiro"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-    <Button
-        android:id="@+id/gerar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat"
-        android:text="Gerar"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switchGerar"
+            android:checked="false"
+            android:layout_below="@+id/txvNumeroRandomico"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/txvNumeroRandomico"
+            android:layout_toStartOf="@+id/txvNumeroRandomico" />
+
+        <TextView
+            android:id="@+id/txvNumeroRandomico"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:textSize="70dp"
+            android:background="@drawable/fundo"
+            android:textColor="@android:color/white"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton2"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/txvNumeroRandomico"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
 
     <GridLayout
         android:id="@+id/grid_layout_tabuleiro"
@@ -36,7 +68,7 @@
         android:rowCount="6"
         android:columnOrderPreserved="true"
         android:useDefaultMargins="true"
-        android:layout_above="@+id/gerar"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
 
@@ -152,8 +184,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Soma:  0"
         android:id="@+id/textViewSoma"
-        />
 
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
