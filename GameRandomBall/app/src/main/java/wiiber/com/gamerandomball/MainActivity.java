@@ -47,15 +47,22 @@ public class MainActivity extends AppCompatActivity {
         switchGerar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    if(count == 0) {
-                        if(jogada <= 6) {
-                            atualizaView();
-                        } else {
-                            jogada = 0;
-                            soma = 0;
-                        }
-                        switchGerar.setChecked(false);
+                if (isChecked) {
+                    resetarNumeros();
+                    switchGerar.setChecked(false);
+                }
+            }
+        });
+
+        textViewNumberRandom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count == 0) {
+                    if (jogada <= 6) {
+                        atualizaView();
+                    } else {
+                        jogada = 0;
+                        soma = 0;
                     }
                 }
             }
@@ -109,13 +116,14 @@ public class MainActivity extends AppCompatActivity {
                             animation(tvNumSix);
                             resultados[0] = Integer.valueOf(textViewNumberRandom.getText().toString());
                             animationButton(tvNumSix, textViewNumberRandom.getText().toString());
+                            jogada = 0;
                             break;
                     }
 
                     for(int i = 0; i < resultados.length; i++){
                         soma += resultados[i];
                     }
-                    tvSoma.setText("Soma: " + soma);
+                    tvSoma.setText(getString(R.string.soma) + ": " + soma);
                 }
             }
         }, 50);
@@ -141,5 +149,30 @@ public class MainActivity extends AppCompatActivity {
                 view.setText(numero);
             }
         }, 300);
+    }
+
+    private void resetarNumeros(){
+
+        animation(tvNumOne);
+        animationButton(tvNumOne, "");
+        animation(tvNumTwo);
+        animationButton(tvNumTwo, "");
+        animation(tvNumTree);
+        animationButton(tvNumTree, "");
+        animation(tvNumFour);
+        animationButton(tvNumFour, "");
+        animation(tvNumFive);
+        animationButton(tvNumFive, "");
+        animation(tvNumSix);
+        animationButton(tvNumSix, "");
+
+        animation2(textViewNumberRandom);
+        animationButton(textViewNumberRandom, "?");
+
+        count = 0;
+        soma = 0;
+        tvSoma.setText(getString(R.string.soma) + ": " + soma);
+        resultados = new int[6];
+        jogada = 0;
     }
 }
