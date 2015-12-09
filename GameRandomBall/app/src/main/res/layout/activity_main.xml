@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    gamerandomball:context="wiiber.com.gamerandomball.MainActivity">
+    gamerandomball:context="wiiber.com.gamerandomball.MainActivity"
+    android:background="@drawable/mesa">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -39,6 +40,7 @@
             android:background="@drawable/fundo"
             android:textColor="@android:color/white"
             android:layout_centerVertical="true"
+            android:soundEffectsEnabled="true"
             android:layout_centerHorizontal="true" />
 
         <ImageButton
@@ -177,11 +179,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Soma:  0"
         android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:id="@+id/textViewSoma"
-        android:shadowColor="#DD2ECCFA"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="1.5"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
 
@@ -190,6 +189,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/switchGerar"
         android:checked="false"
+        android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textViewSoma"
         android:layout_alignEnd="@+id/textViewSoma"

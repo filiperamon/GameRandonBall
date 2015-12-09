@@ -1,5 +1,8 @@
 package wiiber.com.gamerandomball;
 
+import android.app.Activity;
+import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +16,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private Switch switchGerar;
     private TextView textViewNumberRandom, tvSoma;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private int jogada = 0;
     private int[] resultados;
     private int soma;
+    private MediaPlayer mediaRoleta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
         tvSoma       = (TextView) findViewById(R.id.textViewSoma);
         switchGerar  = (Switch) findViewById(R.id.switchGerar);
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/postmaster.ttf");
+        tvSoma.setTypeface(font);
+        textViewNumberRandom.setTypeface(font);
+        tvNumOne.setTypeface(font);
+        tvNumTwo.setTypeface(font);
+        tvNumTree.setTypeface(font);
+        tvNumFour.setTypeface(font);
+        tvNumFive.setTypeface(font);
+        tvNumSix.setTypeface(font);
+        switchGerar.setTypeface(font);
+
+        mediaRoleta = MediaPlayer.create(this,R.raw.roleta);
         random = new Random();
         textViewNumberRandom.setText("?");
         resultados = new int[6];
@@ -69,8 +85,12 @@ public class MainActivity extends AppCompatActivity {
         });
    }
 
+    private void efeitoSonoroRoleta(){
+        mediaRoleta.start();
+    }
+
     private void atualizaView(){
-        final int numeroGerado = random.nextInt(101);
+        final int numeroGerado = random.nextInt(60) + 1;
         textViewNumberRandom.setText(String.valueOf(numeroGerado));
         count ++;
 
@@ -79,12 +99,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (count < 10) {
+                    efeitoSonoroRoleta();
                     animation2(textViewNumberRandom);
                     atualizaView();
                 } else {
                     count = 0;
                     jogada ++;
                     textViewNumberRandom.setText(String.valueOf(numeroGerado));
+
+                    if(jogada == 6){
+                        textViewNumberRandom.setClickable(false);
+                    }
 
                     switch (jogada) {
                         case 1:
@@ -126,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                     tvSoma.setText(getString(R.string.soma) + ": " + soma);
                 }
             }
-        }, 50);
+        }, 60);
     }
 
     private void animation(View view) {
@@ -168,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
         animation2(textViewNumberRandom);
         animationButton(textViewNumberRandom, "?");
+        textViewNumberRandom.setClickable(true);
 
         count = 0;
         soma = 0;
