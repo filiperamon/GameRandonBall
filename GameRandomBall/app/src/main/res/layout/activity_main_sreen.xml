@@ -19,7 +19,7 @@
         android:elevation="@dimen/cardview_default_elevation"
         memogame:cardBackgroundColor="#AAFFFFFF"
         tools:cardCornerRadius="2dp"
-
+        memogame:cardCornerRadius="10dp"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -51,7 +51,8 @@
             android:textColor="@android:color/white"
             android:layout_below="@+id/textView2"
             android:layout_toRightOf="@+id/btn_iniciar"
-            android:layout_toEndOf="@+id/btn_iniciar" />
+            android:layout_alignRight="@+id/textView2"
+            android:layout_alignEnd="@+id/textView2" />
 
         <TextView
             android:layout_width="wrap_content"

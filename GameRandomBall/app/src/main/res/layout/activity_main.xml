@@ -195,5 +195,15 @@
         android:layout_alignEnd="@+id/textViewSoma"
         android:text="Reset" />
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/volume"
+        android:background="#11ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/volume_high"/>
+
 
 </RelativeLayout>
