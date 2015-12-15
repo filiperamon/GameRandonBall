@@ -1,6 +1,7 @@
 package wiiber.com.gamerandomball;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Handler;
@@ -18,7 +19,7 @@ import java.util.Random;
 public class MainActivity extends Activity {
 
     private Switch switchRest;
-    private TextView textViewNumberRandom, tvSum;
+    private TextView txtNumRandom, tvSum;
     private Button tvNumOne, tvNumTwo, tvNumTree, tvNumFour, tvNumFive, tvNumSix ;
     private ImageButton btnVolume;
     public Random random;
@@ -33,20 +34,19 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textViewNumberRandom = (TextView) findViewById(R.id.txvNumeroRandomico);
+        btnVolume    = (ImageButton) findViewById(R.id.volume);
+        txtNumRandom = (TextView) findViewById(R.id.txvNumeroRandomico);
+        tvSum        = (TextView) findViewById(R.id.textViewSoma);
         tvNumOne     = (Button) findViewById(R.id.textViewNumOne);
         tvNumTwo     = (Button) findViewById(R.id.textViewNumTwo);
         tvNumTree    = (Button) findViewById(R.id.textViewNumTree);
         tvNumFour    = (Button) findViewById(R.id.textViewNumFour);
         tvNumFive    = (Button) findViewById(R.id.textViewNumFive);
         tvNumSix     = (Button) findViewById(R.id.textViewNumSix);
-        btnVolume = (ImageButton) findViewById(R.id.volume);
-        tvSum = (TextView) findViewById(R.id.textViewSoma);
-        switchRest = (Switch) findViewById(R.id.switchGerar);
+        switchRest   = (Switch) findViewById(R.id.switchGerar);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/postmaster.ttf");
-        tvSum.setTypeface(font);
-        textViewNumberRandom.setTypeface(font);
+        txtNumRandom.setTypeface(font);
         tvNumOne.setTypeface(font);
         tvNumTwo.setTypeface(font);
         tvNumTree.setTypeface(font);
@@ -54,10 +54,11 @@ public class MainActivity extends Activity {
         tvNumFive.setTypeface(font);
         tvNumSix.setTypeface(font);
         switchRest.setTypeface(font);
+        tvSum.setTypeface(font);
 
         audeoRoleta = MediaPlayer.create(this,R.raw.roleta);
         random = new Random();
-        textViewNumberRandom.setText("?");
+        txtNumRandom.setText("?");
         results = new int[6];
         soma = 0;
         volume = 1;
@@ -72,7 +73,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        textViewNumberRandom.setOnClickListener(new View.OnClickListener() {
+        txtNumRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (count == 0) {
@@ -108,7 +109,7 @@ public class MainActivity extends Activity {
 
     private void refreshView(){
         final int numberRandom = random.nextInt(60) + 1;
-        textViewNumberRandom.setText(String.valueOf(numberRandom));
+        txtNumRandom.setText(String.valueOf(numberRandom));
         count ++;
 
         Handler handler = new Handler(getMainLooper());
@@ -117,47 +118,47 @@ public class MainActivity extends Activity {
             public void run() {
                 if (count < 10) {
                     efeitoSonoroRoleta();
-                    animationRoleta(textViewNumberRandom);
+                    animationRoleta(txtNumRandom);
                     refreshView();
                 } else {
                     count = 0;
                     player++;
-                    textViewNumberRandom.setText(String.valueOf(numberRandom));
+                    txtNumRandom.setText(String.valueOf(numberRandom));
 
                     if(player == 6){
-                        textViewNumberRandom.setClickable(false);
+                        txtNumRandom.setClickable(false);
                     }
 
                     switch (player) {
                         case 1:
                             animationResults(tvNumOne);
-                            results[0] = Integer.valueOf(textViewNumberRandom.getText().toString());
-                            animationButton(tvNumOne, textViewNumberRandom.getText().toString());
+                            results[0] = Integer.valueOf(txtNumRandom.getText().toString());
+                            animationButton(tvNumOne, txtNumRandom.getText().toString());
                             break;
                         case 2:
                             animationResults(tvNumTwo);
-                            results[0] = Integer.valueOf(textViewNumberRandom.getText().toString());
-                            animationButton(tvNumTwo, textViewNumberRandom.getText().toString());
+                            results[0] = Integer.valueOf(txtNumRandom.getText().toString());
+                            animationButton(tvNumTwo, txtNumRandom.getText().toString());
                             break;
                         case 3:
                             animationResults(tvNumTree);
-                            results[0] = Integer.valueOf(textViewNumberRandom.getText().toString());
-                            animationButton(tvNumTree, textViewNumberRandom.getText().toString());
+                            results[0] = Integer.valueOf(txtNumRandom.getText().toString());
+                            animationButton(tvNumTree, txtNumRandom.getText().toString());
                             break;
                         case 4:
                             animationResults(tvNumFour);
-                            results[0] = Integer.valueOf(textViewNumberRandom.getText().toString());
-                            animationButton(tvNumFour, textViewNumberRandom.getText().toString());
+                            results[0] = Integer.valueOf(txtNumRandom.getText().toString());
+                            animationButton(tvNumFour, txtNumRandom.getText().toString());
                             break;
                         case 5:
                             animationResults(tvNumFive);
-                            results[0] = Integer.valueOf(textViewNumberRandom.getText().toString());
-                            animationButton(tvNumFive, textViewNumberRandom.getText().toString());
+                            results[0] = Integer.valueOf(txtNumRandom.getText().toString());
+                            animationButton(tvNumFive, txtNumRandom.getText().toString());
                             break;
                         case 6:
                             animationResults(tvNumSix);
-                            results[0] = Integer.valueOf(textViewNumberRandom.getText().toString());
-                            animationButton(tvNumSix, textViewNumberRandom.getText().toString());
+                            results[0] = Integer.valueOf(txtNumRandom.getText().toString());
+                            animationButton(tvNumSix, txtNumRandom.getText().toString());
                             player = 0;
                             break;
                     }
@@ -165,7 +166,7 @@ public class MainActivity extends Activity {
                     for(int i = 0; i < results.length; i++){
                         soma += results[i];
                     }
-                    tvSum.setText(getString(R.string.soma) + ": " + soma);
+                    tvSum.setText(getString(R.string.soma) + ": " + soma + " ");
                 }
             }
         }, 60);
@@ -183,12 +184,12 @@ public class MainActivity extends Activity {
         view.startAnimation(animator);
     }
 
-    public void animationButton(final TextView view, final String numero){
+    public void animationButton(final TextView view, final String number){
         Handler handler = new Handler(getMainLooper());
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                view.setText(numero);
+                view.setText(number);
             }
         }, 300);
     }
@@ -208,13 +209,13 @@ public class MainActivity extends Activity {
         animationResults(tvNumSix);
         animationButton(tvNumSix, "");
 
-        animationRoleta(textViewNumberRandom);
-        animationButton(textViewNumberRandom, "?");
-        textViewNumberRandom.setClickable(true);
+        animationRoleta(txtNumRandom);
+        animationButton(txtNumRandom, "?");
+        txtNumRandom.setClickable(true);
 
         count = 0;
         soma = 0;
-        tvSum.setText(getString(R.string.soma) + ": " + soma);
+        tvSum.setText(getString(R.string.soma) + ": " + soma + " ");
         results = new int[6];
         player = 0;
     }

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">The Number</string>
     <string name="soma">Soma</string>
+    <string name="descricao_aplicativo">testetestetestetestetestetestetest
+        etestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetest
+        etestetestetestetestetestetestetestetestetestetestetestetestetestetestetest
+        etestetestetestetestetestetestetestetesteteste</string>
 </resources>

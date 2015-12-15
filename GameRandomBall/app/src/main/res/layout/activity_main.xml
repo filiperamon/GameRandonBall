@@ -3,17 +3,18 @@
     xmlns:gamerandomball="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     gamerandomball:context="wiiber.com.gamerandomball.MainActivity"
-    android:background="@drawable/mesa">
+    android:background="@drawable/the_number_game">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewSoma"
+        android:layout_below="@+id/cv"
         android:layout_above="@+id/grid_layout_tabuleiro"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -33,10 +34,10 @@
 
         <TextView
             android:id="@+id/txvNumeroRandomico"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/size_ball_layout_width"
+            android:layout_height="@dimen/size_ball_layout_height"
             android:gravity="center"
-            android:textSize="70dp"
+            android:textSize="@dimen/size_ball_random"
             android:background="@drawable/fundo"
             android:textColor="@android:color/white"
             android:layout_centerVertical="true"
@@ -69,15 +70,15 @@
 
         <Button
             android:id="@+id/textViewNumOne"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/size_ball_result_layout_width"
+            android:layout_height="@dimen/size_ball_result_layout_height"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_above="@+id/gerar"
             android:layout_marginBottom="16dp"
             android:layout_marginRight="16dp"
             android:textColor="#ffffff"
             android:background="@drawable/fundo"
-            android:textSize="20dp"
+            android:textSize="@dimen/size_ball_result"
             android:elevation="6dp"
             android:layout_column="0"
             android:layout_row="0"/>
@@ -85,8 +86,8 @@
 
         <Button
             android:id="@+id/textViewNumTwo"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/size_ball_result_layout_width"
+            android:layout_height="@dimen/size_ball_result_layout_height"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_above="@+id/gerar"
             android:layout_marginBottom="16dp"
@@ -95,7 +96,7 @@
             android:background="@drawable/fundo"
             android:layout_toRightOf="@+id/textViewNumOne"
             android:layout_toEndOf="@+id/textViewNumOne"
-            android:textSize="20dp"
+            android:textSize="@dimen/size_ball_result"
             android:elevation="6dp"
             android:layout_column="1"
             android:layout_row="0"/>
@@ -103,8 +104,8 @@
 
         <Button
             android:id="@+id/textViewNumTree"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/size_ball_result_layout_width"
+            android:layout_height="@dimen/size_ball_result_layout_height"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_above="@+id/gerar"
             android:layout_marginBottom="16dp"
@@ -113,14 +114,14 @@
             android:background="@drawable/fundo"
             android:layout_toRightOf="@+id/textViewNumOne"
             android:layout_toEndOf="@+id/textViewNumOne"
-            android:textSize="20dp"
+            android:textSize="@dimen/size_ball_result"
             android:elevation="6dp"
             android:layout_column="2"
             android:layout_row="0"/>
         <Button
             android:id="@+id/textViewNumFour"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/size_ball_result_layout_width"
+            android:layout_height="@dimen/size_ball_result_layout_height"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_above="@+id/gerar"
             android:layout_marginBottom="16dp"
@@ -130,7 +131,7 @@
             android:layout_alignTop="@+id/textViewNumTree"
             android:layout_toRightOf="@+id/textViewNumTree"
             android:layout_toEndOf="@+id/textViewNumTree"
-            android:textSize="20dp"
+            android:textSize="@dimen/size_ball_result"
             android:elevation="6dp"
             android:layout_column="0"
             android:layout_row="1" />
@@ -138,8 +139,8 @@
 
         <Button
             android:id="@+id/textViewNumFive"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/size_ball_result_layout_width"
+            android:layout_height="@dimen/size_ball_result_layout_height"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_above="@+id/gerar"
             android:layout_marginBottom="16dp"
@@ -148,15 +149,15 @@
             android:background="@drawable/fundo"
             android:layout_alignTop="@+id/textViewNumFour"
             android:layout_toRightOf="@+id/textViewNumFour"
-            android:textSize="20dp"
+            android:textSize="@dimen/size_ball_result"
             android:elevation="6dp"
             android:layout_column="1"
             android:layout_row="1"/>
 
         <Button
             android:id="@+id/textViewNumSix"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/size_ball_result_layout_width"
+            android:layout_height="@dimen/size_ball_result_layout_height"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_above="@+id/gerar"
             android:layout_marginBottom="16dp"
@@ -165,7 +166,7 @@
             android:background="@drawable/fundo"
             android:layout_alignTop="@+id/textViewNumFour"
             android:layout_toRightOf="@+id/textViewNumFour"
-            android:textSize="20dp"
+            android:textSize="@dimen/size_ball_result"
             android:elevation="6dp"
             android:layout_column="2"
             android:layout_row="1"/>
@@ -173,16 +174,29 @@
 
     </GridLayout>
 
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        android:elevation="2dp"
+        app:cardBackgroundColor="#66FFFFFF"
+        app:cardCornerRadius="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        >
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Soma:  0"
+        android:textSize="30dp"
+        android:text="Soma: 0"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:padding="10dp"
         android:id="@+id/textViewSoma"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:textColor="@android:color/black"
+        />
+
+    </android.support.v7.widget.CardView>
 
     <Switch
         android:layout_width="wrap_content"
@@ -190,10 +204,9 @@
         android:id="@+id/switchGerar"
         android:checked="false"
         android:textColor="@android:color/white"
+        android:text="Reset"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textViewSoma"
-        android:layout_alignEnd="@+id/textViewSoma"
-        android:text="Reset" />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="wrap_content"

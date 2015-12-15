@@ -15,10 +15,6 @@ public class Splash extends Activity implements Runnable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        TextView txt = (TextView) findViewById(R.id.textView);
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/postmasterlaser.ttf");
-        txt.setTypeface(font);
-
         Handler handler = new Handler();
         handler.postDelayed(this, 3000);
     }
