@@ -30,7 +30,7 @@
             android:id="@+id/btn_iniciar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Play"
+            android:text="@string/play"
             android:background="#FF7403"
             android:textColor="@android:color/white"
             android:textStyle="bold"/>
@@ -39,7 +39,7 @@
             android:id="@+id/btn_opcoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sobre"
+            android:text="@string/about"
             android:layout_marginLeft="10dp"
             android:textStyle="bold"
             android:background="#FF0505"

@@ -2,6 +2,7 @@ package wiiber.com.gamerandomball;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,11 @@ public class MainScreenActivity extends Activity {
 
         btnStart = (Button) findViewById(R.id.btn_iniciar);
         btnOption = (Button) findViewById(R.id.btn_opcoes);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/DSAccent.otf");
+        btnStart.setTypeface(font);
+        btnOption.setTypeface(font);
+
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">The Number</string>
     <string name="soma">Soma</string>
-    <string name="descricao_aplicativo">testetestetestetestetestetestetest
-        etestetestetestetestetestetestetestetestetestetestetestetestetestetestetestetest
-        etestetestetestetestetestetestetestetestetestetestetestetestetestetestetest
-        etestetestetestetestetestetestetestetesteteste</string>
+    <string name="play">Jogar</string>
+    <string name="about">Sobre</string>
+    <string name="wiiberemail">Desenvolvido por wiiber@outlook.com</string>
+    <string name="descricao_aplicativo">O aplicativo <b><i>The Number</i></b>, trata-se de um jogo, onde, seis dezenas são sorteadas, ganhando aquele que tiver a somatória mais alta.
+        \n\nPode também ser utilizado como, palpites para outros jogos, tais como: "Quina, Sena, etc.\n\nProprietário\nLUIZ REBOUÇAS FILHO.\nEMAIL - prluizinho58@hotmail.com\nCONTATO - 85 3283-4069 / 85 999459858"</string>
 </resources>

@@ -23,45 +23,17 @@ public class MainActivity extends Activity {
     private Button tvNumOne, tvNumTwo, tvNumTree, tvNumFour, tvNumFive, tvNumSix ;
     private ImageButton btnVolume;
     public Random random;
-    private int count = 0;
-    private int player = 0;
+    private int soma, volume, count, player = 0;
     private int[] results;
-    private int soma, volume;
-    private MediaPlayer audeoRoleta;
+    private MediaPlayer audioRoleta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnVolume    = (ImageButton) findViewById(R.id.volume);
-        txtNumRandom = (TextView) findViewById(R.id.txvNumeroRandomico);
-        tvSum        = (TextView) findViewById(R.id.textViewSoma);
-        tvNumOne     = (Button) findViewById(R.id.textViewNumOne);
-        tvNumTwo     = (Button) findViewById(R.id.textViewNumTwo);
-        tvNumTree    = (Button) findViewById(R.id.textViewNumTree);
-        tvNumFour    = (Button) findViewById(R.id.textViewNumFour);
-        tvNumFive    = (Button) findViewById(R.id.textViewNumFive);
-        tvNumSix     = (Button) findViewById(R.id.textViewNumSix);
-        switchRest   = (Switch) findViewById(R.id.switchGerar);
-
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/postmaster.ttf");
-        txtNumRandom.setTypeface(font);
-        tvNumOne.setTypeface(font);
-        tvNumTwo.setTypeface(font);
-        tvNumTree.setTypeface(font);
-        tvNumFour.setTypeface(font);
-        tvNumFive.setTypeface(font);
-        tvNumSix.setTypeface(font);
-        switchRest.setTypeface(font);
-        tvSum.setTypeface(font);
-
-        audeoRoleta = MediaPlayer.create(this,R.raw.roleta);
-        random = new Random();
-        txtNumRandom.setText("?");
-        results = new int[6];
-        soma = 0;
-        volume = 1;
+        inicializaComponentes();
+        inicializaVariaveis();
 
         switchRest.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -90,7 +62,6 @@ public class MainActivity extends Activity {
         btnVolume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (volume == 1) {
                     btnVolume.setImageResource(R.drawable.volume_off);
                     volume = 0;
@@ -102,9 +73,44 @@ public class MainActivity extends Activity {
         });
    }
 
+    private void inicializaVariaveis() {
+        audioRoleta = MediaPlayer.create(this, R.raw.roleta);
+        random = new Random();
+        txtNumRandom.setText("?");
+        results = new int[6];
+        soma = 0;
+        volume = 1;
+    }
+
+    private void inicializaComponentes() {
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/postmaster.ttf");
+        btnVolume    = (ImageButton) findViewById(R.id.volume);
+        txtNumRandom = (TextView) findViewById(R.id.txvNumeroRandomico);
+        tvSum        = (TextView) findViewById(R.id.textViewSoma);
+        tvNumOne     = (Button) findViewById(R.id.textViewNumOne);
+        tvNumTwo     = (Button) findViewById(R.id.textViewNumTwo);
+        tvNumTree    = (Button) findViewById(R.id.textViewNumTree);
+        tvNumFour    = (Button) findViewById(R.id.textViewNumFour);
+        tvNumFive    = (Button) findViewById(R.id.textViewNumFive);
+        tvNumSix     = (Button) findViewById(R.id.textViewNumSix);
+        switchRest   = (Switch) findViewById(R.id.switchGerar);
+
+        txtNumRandom.setTypeface(font);
+        tvNumOne    .setTypeface(font);
+        tvNumTwo    .setTypeface(font);
+        tvNumTree   .setTypeface(font);
+        tvNumFour   .setTypeface(font);
+        tvNumFive   .setTypeface(font);
+        tvNumSix    .setTypeface(font);
+        switchRest  .setTypeface(font);
+
+        font = Typeface.createFromAsset(getAssets(), "fonts/DSAccent.otf");
+        tvSum.setTypeface(font);
+    }
+
     private void efeitoSonoroRoleta(){
         if(volume==1)
-            audeoRoleta.start();
+            audioRoleta.start();
     }
 
     private void refreshView(){
@@ -197,17 +203,17 @@ public class MainActivity extends Activity {
     private void resetNumbers(){
 
         animationResults(tvNumOne);
-        animationButton(tvNumOne, "");
+        animationButton (tvNumOne, "");
         animationResults(tvNumTwo);
-        animationButton(tvNumTwo, "");
+        animationButton (tvNumTwo, "");
         animationResults(tvNumTree);
-        animationButton(tvNumTree, "");
+        animationButton (tvNumTree, "");
         animationResults(tvNumFour);
-        animationButton(tvNumFour, "");
+        animationButton (tvNumFour, "");
         animationResults(tvNumFive);
-        animationButton(tvNumFive, "");
+        animationButton (tvNumFive, "");
         animationResults(tvNumSix);
-        animationButton(tvNumSix, "");
+        animationButton (tvNumSix, "");
 
         animationRoleta(txtNumRandom);
         animationButton(txtNumRandom, "?");
