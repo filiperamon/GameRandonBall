@@ -14,10 +14,10 @@ public class AboutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
         
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/DSAccent.otf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/postmaster.ttf");
         txtAbout = (TextView) findViewById(R.id.txtAbout);
         txvDescricao = (TextView) findViewById(R.id.textViewDescricao);
         txtAbout.setTypeface(font);
-        txvDescricao.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/postmaster.ttf"));
+        txvDescricao.setTypeface(font);
     }
 }

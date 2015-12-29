@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
     private int soma, volume, count, player = 0;
     private int[] results;
     private MediaPlayer audioRoleta;
+    private int tempoRotacao = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +75,6 @@ public class MainActivity extends Activity {
    }
 
     private void inicializaVariaveis() {
-        audioRoleta = MediaPlayer.create(this, R.raw.roleta);
         random = new Random();
         txtNumRandom.setText("?");
         results = new int[6];
@@ -108,11 +108,18 @@ public class MainActivity extends Activity {
         tvSum.setTypeface(font);
     }
 
-    private void efeitoSonoroRoleta(){
+    private void efeitoSonoroRoleta(String efeito){
+
+        if(efeito.equals("R.raw.roleta")) {
+            audioRoleta = MediaPlayer.create(this, R.raw.roleta);
+        } else {
+            audioRoleta = MediaPlayer.create(this, R.raw.reset);
+        }
+
         if(volume==1)
             audioRoleta.start();
     }
-
+ 
     private void refreshView(){
         final int numberRandom = random.nextInt(60) + 1;
         txtNumRandom.setText(String.valueOf(numberRandom));
@@ -122,12 +129,28 @@ public class MainActivity extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (count < 10) {
-                    efeitoSonoroRoleta();
-                    animationRoleta(txtNumRandom);
+
+                if(count == 1)
+                    efeitoSonoroRoleta("R.raw.roleta");
+
+                if (count < 37) {
+                    if(count < 31) {
+                        animationRoleta(txtNumRandom);
+                    }
+                    else if (count < 36){
+                        tempoRotacao = 180;
+                        animationRoletaLenta(txtNumRandom, 10);
+                    }
+                    else {
+                        tempoRotacao = 300;
+                        animationRoletaLenta(txtNumRandom, 20);
+                    }
+
                     refreshView();
+
                 } else {
                     count = 0;
+                    tempoRotacao = 100;
                     player++;
                     txtNumRandom.setText(String.valueOf(numberRandom));
 
@@ -175,7 +198,7 @@ public class MainActivity extends Activity {
                     tvSum.setText(getString(R.string.soma) + ": " + soma + " ");
                 }
             }
-        }, 60);
+        }, tempoRotacao);
     }
 
     private void animationResults(View view) {
@@ -186,6 +209,18 @@ public class MainActivity extends Activity {
 
     private void animationRoleta(View view) {
         Animation animator = AnimationUtils.loadAnimation(this, R.anim.from_middle2);
+        view.setAnimation(animator);
+        view.startAnimation(animator);
+    }
+
+    private void animationRoletaLenta(View view, int tempo) {
+        Animation animator;
+
+        if(tempo < 11)
+            animator = AnimationUtils.loadAnimation(this, R.anim.from_middle3);
+        else
+            animator = AnimationUtils.loadAnimation(this, R.anim.from_middle4);
+
         view.setAnimation(animator);
         view.startAnimation(animator);
     }
@@ -201,6 +236,8 @@ public class MainActivity extends Activity {
     }
 
     private void resetNumbers(){
+
+        efeitoSonoroRoleta("R.raw.reset");
 
         animationResults(tvNumOne);
         animationButton (tvNumOne, "");

@@ -194,7 +194,7 @@
         android:padding="10dp"
         android:id="@+id/textViewSoma"
         android:background="@drawable/fundo2"
-        android:textColor="@android:color/holo_orange_dark"
+        android:textColor="@android:color/white"
         />
 
     </android.support.v7.widget.CardView>
