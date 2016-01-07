@@ -14,6 +14,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends Activity {
@@ -27,6 +31,8 @@ public class MainActivity extends Activity {
     private int[] results;
     private MediaPlayer audioRoleta;
     private int tempoRotacao = 100;
+    private List<Integer> numerosSorteados;
+    public int numberRandom = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,7 @@ public class MainActivity extends Activity {
                     if (player <= 6) {
                         refreshView();
                     } else {
+                        numerosSorteados = new ArrayList<Integer>();
                         player = 0;
                         soma = 0;
                     }
@@ -106,6 +113,9 @@ public class MainActivity extends Activity {
 
         font = Typeface.createFromAsset(getAssets(), "fonts/DSAccent.otf");
         tvSum.setTypeface(font);
+
+        numerosSorteados = new ArrayList<Integer>();
+        numerosSorteados.add(0);
     }
 
     private void efeitoSonoroRoleta(String efeito){
@@ -121,7 +131,11 @@ public class MainActivity extends Activity {
     }
  
     private void refreshView(){
-        final int numberRandom = random.nextInt(60) + 1;
+
+        do{
+            numberRandom = random.nextInt(60) + 1;
+        }while (numerosSorteados.contains(numberRandom));
+
         txtNumRandom.setText(String.valueOf(numberRandom));
         count ++;
 
@@ -151,6 +165,7 @@ public class MainActivity extends Activity {
                 } else {
                     count = 0;
                     tempoRotacao = 100;
+                    numerosSorteados.add(numberRandom);
                     player++;
                     txtNumRandom.setText(String.valueOf(numberRandom));
 
@@ -237,6 +252,7 @@ public class MainActivity extends Activity {
 
     private void resetNumbers(){
 
+        numerosSorteados = new ArrayList<Integer>();
         efeitoSonoroRoleta("R.raw.reset");
 
         animationResults(tvNumOne);

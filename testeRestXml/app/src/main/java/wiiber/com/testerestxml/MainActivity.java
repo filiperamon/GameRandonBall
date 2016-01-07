@@ -25,8 +25,10 @@ import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
 
+    private String URLteste = "http://136.166.96.189:8080/hades/rest/tests/getTestsByCA";
     private TextView tvIsConnected;
     private Button refresh;
+    private TextView txvCa, txvModelo;
     private JSONObject obj;
 
     @Override
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         tvIsConnected = (TextView) findViewById(R.id.tvIsConnected);
         refresh = (Button) findViewById(R.id.button);
+        txvCa   = (TextView) findViewById(R.id.editCa);
+        txvModelo = (TextView) findViewById(R.id.editModelo);
 
         if(isConnected()){
             tvIsConnected.setText("You are conncted");
@@ -47,13 +51,14 @@ public class MainActivity extends AppCompatActivity {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                servico();
+                servico(txvCa.getText().toString(),txvModelo.getText().toString());
             }
         });
     }
 
-    public void servico(){
-        new HttpAsyncTask().execute("http://192.168.1.22:8080/hades/rest/tests");
+    public void servico(String ca, String modelo){
+        new HttpAsyncTask().execute(URLteste+"/"+ca+"/"+modelo);
+        //new HttpAsyncTask().execute("http://192.168.1.22:8080/hades/rest/tests/getTestsByCA/");
     }
 
     public static String GET(String url){
